@@ -9,7 +9,7 @@ var callback = function(err, data, res){
   }
   else{
     msg = data;
-    console.log('Cerveja Inserida: ', data);
+    console.log('Resposta: ', data);
   }
   res.json(msg);
 };
@@ -20,11 +20,13 @@ router.get('/', function(req, res) {
 
 // passando a variável :id para nossa rota
 router.get('/:id', function(req, res) {
+  console.log('Show');
   Controller.show(req, res, callback);
 });
 
 // POST /api/beers
 router.post('/', function(req, res) {
+  console.log('Show');
   Controller.create(req, res, callback);
 });
 

@@ -1,15 +1,11 @@
-extends ../layout
+h1 Cerveja {{ beer.name }}
 
-block content
-  h1= title
-  p Welcome to #{title}
+ul
+  li Nome: {{beer.name}}
+  li Preço: {{beer.price}}
+  li Alcool: {{beer.alcohol}}
+  li Categoria: {{beer.category}}
+  li Descrição: {{beer.description}}
 
-  ul
-    li Nome: #{beers.name}
-    li Preço: #{beers.price}
-    li Alcool: #{beers.alcohol}
-    li Categoria: #{beers.category}
-    li Descrição: #{beers.description}
-
-  a(href='/beers/#{beers._id}/edit') EDITAR
+a(href='/beers/{{beer._id}}/edit') EDITAR
 
