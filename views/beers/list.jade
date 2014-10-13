@@ -1,0 +1,6 @@
+h1 Listagem de cervejas
+
+ul
+  li(data-ng-repeat='beer in beers')
+    a(href='/beers/{{beer._id}}')
+      | {{beer.name}} - {{beer.price}}

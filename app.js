@@ -5,6 +5,7 @@ var express = require('express'),
   morgan = require('morgan'),
   routes = require('./routes'),
   partials = require('./routes/partials'),
+  expose = require('./routes/expose'),
   http = require('http'),
   path = require('path');
 
@@ -49,6 +50,7 @@ app.use('/', routes);
 
 // server view partials
 app.use('/partials', partials);
+app.use('/expose', expose);
 
 // JSON API
 app.use('/api/beers', api.beers);

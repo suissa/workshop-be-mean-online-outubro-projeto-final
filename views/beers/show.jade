@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  ul
+    li Nome: #{beers.name}
+    li Preço: #{beers.price}
+    li Alcool: #{beers.alcohol}
+    li Categoria: #{beers.category}
+    li Descrição: #{beers.description}
+
+  a(href='/beers/#{beers._id}/edit') EDITAR
+
