@@ -1,4 +1,4 @@
-(function(){
+(function(angular){
 
   'use strict';
 
@@ -32,21 +32,20 @@
     .controller('BeerCreateController', BeerCreateController)
     .controller('BeerEditController', BeerEditController);
 
-  function BeerListController ($scope, $http) {
+  function BeerListController ($scope, $http, BeerService) {
     var url = '/api/beers',
       method = 'GET';
+      console.log(BeerService);
 
-    $http({
-      url: url,
-      method: method
-    })
-    .success(function(data){
+    BeerService
+    .find()
+    .success(function () {
       console.log('Data: ', data);
-      $scope.beers = data;
     })
-    .error(function(err){
+    .error(function () {
       console.log('Erro: ', err);
     });
+
 
     $scope.remove = function (beer) {
       if(confirm('Deseja mesmo remover ' + beer.name + '?')){
@@ -153,10 +152,11 @@
       });
 
     };
-  }
-  BeerListController.$inject = ['$scope', '$http', '$routeParams'];
+  };
+
+  BeerListController.$inject = ['$scope', '$http', '$routeParams', 'BeerService'];
   BeerShowController.$inject = ['$scope', '$http', '$routeParams'];
   BeerCreateController.$inject = ['$scope', '$http'];
   BeerEditController.$inject = ['$scope', '$http', '$routeParams'];
-}());
+}(angular));
 
