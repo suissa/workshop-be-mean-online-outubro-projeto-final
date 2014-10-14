@@ -72,22 +72,22 @@
     var url = '/api/beers/',
       method = 'POST';
 
-      $scope.save = function (beer) {
+    $scope.save = function (beer) {
 
-        $http({
-          url: url,
-          method: method,
-          data: beer
-        })
-        .success(function(data){
-          console.log('Create: ', data);
-          $scope.beer = data;
-        })
-        .error(function(err){
-          console.log('Erro: ', err);
-        });
+      $http({
+        url: url,
+        method: method,
+        data: beer
+      })
+      .success(function(data){
+        console.log('Create: ', data);
+        $scope.beer = data;
+      })
+      .error(function(err){
+        console.log('Erro: ', err);
+      });
 
-      };
+    };
   }
 
 // Edit
@@ -107,6 +107,26 @@
     .error(function(err){
       console.log('Erro: ', err);
     });
+
+    $scope.save = function (beer) {
+
+      var id = $routeParams.id,
+        url = '/api/beers/' + id,
+        method = 'PUT';
+
+      $http({
+        url: url,
+        method: method,
+        data: beer
+      })
+      .success(function(data){
+        console.log('Update: ', data);
+      })
+      .error(function(err){
+        console.log('Erro: ', err);
+      });
+
+    };
   }
   BeerListController.$inject = ['$scope', '$http', '$routeParams'];
   BeerShowController.$inject = ['$scope', '$http', '$routeParams'];

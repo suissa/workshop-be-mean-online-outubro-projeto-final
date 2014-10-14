@@ -33,6 +33,7 @@ var _beer = {
         multi: true
       };
 
+    delete mod._id;
     Beer.update(query, mod, function (err, data) {
       callback(err, data, res);
     });
