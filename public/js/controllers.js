@@ -47,6 +47,32 @@
     .error(function(err){
       console.log('Erro: ', err);
     });
+
+    $scope.remove = function (beer) {
+      if(confirm('Deseja mesmo remover ' + beer.name + '?')){
+
+        var url = '/api/beers/' + beer._id,
+          method = 'DELETE';
+
+        $http({
+          url: url,
+          method: method
+        })
+        .success(function(data){
+          console.log('Data: ', data);
+          alert('Cerveja ' + beer.name + ' removida com SUCESSO!');
+          var index = $scope.beers.indexOf(beer);
+          console.log('Index', index);
+          $scope.beers.splice(index, 1);
+        })
+        .error(function(err){
+          console.log('Erro: ', err);
+          alert('Cerveja ' + beer.name + ' não pode ser removida!');
+        });
+      } else {
+        alert('Mas que bom manolo!');
+      }
+    }
   }
 
   function BeerShowController ($scope, $http, $routeParams) {

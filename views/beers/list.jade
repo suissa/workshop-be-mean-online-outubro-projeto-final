@@ -4,3 +4,5 @@ ul
   li(data-ng-repeat='beer in beers')
     a(href='/beers/{{beer._id}}')
       | {{beer.name}} - {{beer.price}}
+    | - 
+    button(data-ng-click='remove(beer)') REMOVER
