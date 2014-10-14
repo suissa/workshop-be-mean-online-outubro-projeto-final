@@ -32,4 +32,13 @@
 label {
   display: block;
   float: left;
+  width: 100%;
+  padding: 0.3em;
 }
+
+label .form-label {
+  display: inline-block;
+  width: 8em;
+}
+
+
