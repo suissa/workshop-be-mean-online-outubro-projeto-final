@@ -28,7 +28,8 @@
 
     })
     .controller('BeerListController', BeerListController)
-    .controller('BeerShowController', BeerShowController);
+    .controller('BeerShowController', BeerShowController)
+    .controller('BeerCreateController', BeerCreateController);
 
   function BeerListController ($scope, $http) {
     var url = '/api/beers',
@@ -64,7 +65,29 @@
       console.log('Erro: ', err);
     });
   }
-  BeerListController.$inject = ['$scope', '$http'];
+  BeerListController.$inject = ['$scope', '$http', '$routeParams'];
 
+  function BeerCreateController ($scope, $http) {
+    var url = '/api/beers/',
+      method = 'POST';
+
+      $scope.save = function (beer) {
+
+        $http({
+          url: url,
+          method: method,
+          data: beer
+        })
+        .success(function(data){
+          console.log('Create: ', data);
+          $scope.beer = data;
+        })
+        .error(function(err){
+          console.log('Erro: ', err);
+        });
+
+      };
+  }
+  BeerListController.$inject = ['$scope', '$http'];
 }());
 

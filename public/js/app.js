@@ -22,6 +22,10 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'expose/beers/list',
       controller: 'BeerListController'
     }).
+    when('/beers/create', {
+      templateUrl: 'expose/beers/create',
+      controller: 'BeerCreateController'
+    }).
     when('/beers/:id', {
       templateUrl: 'expose/beers/show',
       controller: 'BeerShowController'
